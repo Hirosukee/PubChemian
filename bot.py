@@ -10,11 +10,11 @@ load_dotenv()
 
 class PubChemian(commands.Bot):
     def __init__(self, **options):
-        super().__init__(command_prefix=commands.when_mentioned_or("/"), **options)
+        super().__init__(command_prefix=commands.when_mentioned_or("."), **options)
         print("Starting PubChemian...")
         self.remove_command("help")
 
-        for cog in [cog.replace("/", ".").replace(".py", "") for cog in glob("cogs/*.py")]:
+        for cog in [cog.replace("\\", ".").replace(".py", "") for cog in glob("cogs/*.py")]:
             try:
                 self.load_extension(cog)
                 print(f"loaded: {cog}")
@@ -33,7 +33,7 @@ class PubChemian(commands.Bot):
     async def on_ready(self):
         user = self.user
         print("logged in:", str(user), user.id)
-        activity = Game(name="/pubc <search type> <keywords>")
+        activity = Game(name=".search <search type> <keywords>")
         await self.change_presence(activity=activity)
 
 
