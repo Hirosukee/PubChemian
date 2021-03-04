@@ -21,7 +21,7 @@ class Control(commands.Cog, command_attrs=dict(hidden=True)):
         self.bot.unload_extension("cogs." + cog)
         await ctx.send(f"Unloaded Extension: {cog}.py")
 
-    @commands.command(name="reload")
+    @commands.command(name="reload", aliases=["r"])
     async def owner_reload(self, ctx, cog=None):
         if cog == None:
             for cog in [cog.replace("\\", ".").replace(".py", "") for cog in glob("cogs/*.py")]:
