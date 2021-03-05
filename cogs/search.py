@@ -9,17 +9,22 @@ class Search(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["s"])
-    async def search(self, ctx, query: str, translate: bool=False, namespace: str=None):
-        query_text = query
+    async def search(self, ctx, query: str, *args: str):
+        namespace = "name"
         gos = goslate.Goslate()
-        if namespace == None:
-            namespace = "name"
 
-        if translate == True:
-            query_text = gos.translate(query, "en")
+        if "cid" in args:
+            namespace = "cid"
+        if "smiles" in args:
+            namespace = "smiles"
+        if "formula" in args:
+            namespace = "formula"
+
+        if "-t" in args:
+            query = gos.translate(query, "en")
 
         # get page
-        compound = pcp.get_compounds(query_text, namespace)
+        compound = pcp.get_compounds(query, namespace)
 
         if not compound:
             await ctx.send("Page not found.")
