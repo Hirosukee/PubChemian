@@ -12,15 +12,19 @@ class Search(commands.Cog):
     async def search(self, ctx, query: str, *args: str):
         namespace = "name"
         gos = goslate.Goslate()
+        translation = True
 
         if "cid" in args:
             namespace = "cid"
+            translation = False
         if "smiles" in args:
             namespace = "smiles"
+            translation = False
         if "formula" in args:
             namespace = "formula"
+            translation = False
 
-        if "-t" in args:
+        if "-t" in args & translation:
             query = gos.translate(query, "en")
 
         # get page
