@@ -14,6 +14,8 @@ class Search(commands.Cog):
         gos = goslate.Goslate()
         translation = True
 
+        if "name" in args:
+            namespace = "name"
         if "cid" in args:
             namespace = "cid"
             translation = False
