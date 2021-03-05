@@ -14,15 +14,15 @@ class Search(commands.Cog):
         gos = goslate.Goslate()
         translation = True
 
-        if "name" in args:
+        if "-name" in args:
             namespace = "name"
-        if "cid" in args:
+        if "-cid" in args:
             namespace = "cid"
             translation = False
-        if "smiles" in args:
+        if "-smiles" in args:
             namespace = "smiles"
             translation = False
-        if "formula" in args:
+        if "-formula" in args:
             namespace = "formula"
             translation = False
 
