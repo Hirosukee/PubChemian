@@ -13,20 +13,22 @@ class Search(commands.Cog):
         namespace = "name"
         gos = goslate.Goslate()
         translation = True
+        limiter = 0
 
-        if "-name" in args:
-            namespace = "name"
-        if "-cid" in args:
-            namespace = "cid"
-            translation = False
         if "-smiles" in args:
             namespace = "smiles"
             translation = False
+        if "-cid" in args:
+            namespace = "cid"
+            translation = False
+        if "-name" in args:
+            namespace = "name"
+            translation = True
         if "-formula" in args:
             namespace = "formula"
             translation = False
 
-        if ("-t" in args) & translation:
+        if ("-t" or "-translate" in args) & translation:
             query = gos.translate(query, "en")
 
         # get page
@@ -36,7 +38,12 @@ class Search(commands.Cog):
             await ctx.send("Page not found.")
             return
 
-        for elem in compound:
+        for i in range(limiter):
+
+            if i > compound.count:
+                break
+
+            elem = compound[i]
 
             #embed
             e = discord.Embed(title=elem.synonyms[0], url=f"https://pubchem.ncbi.nlm.nih.gov/compound/{elem.cid}", description="")
