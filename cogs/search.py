@@ -26,7 +26,7 @@ class Search(commands.Cog):
             namespace = "formula"
             translation = False
 
-        if "-t" in args & translation:
+        if ("-t" in args) & translation:
             query = gos.translate(query, "en")
 
         # get page
