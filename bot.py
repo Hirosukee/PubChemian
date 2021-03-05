@@ -14,7 +14,7 @@ class PubChemian(commands.Bot):
         print("Starting PubChemian...")
         self.remove_command("help")
 
-        for cog in [cog.replace("\\", ".").replace(".py", "") for cog in glob("cogs/*.py")]:
+        for cog in [cog.replace("/", ".").replace(".py", "") for cog in glob("cogs/*.py")]:
             try:
                 self.load_extension(cog)
                 print(f"loaded: {cog}")
