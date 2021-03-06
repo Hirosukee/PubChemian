@@ -13,9 +13,10 @@ class Help(commands.Cog):
 
         > `.search[.s] <keyword> (<*args>)`
         To search compounds.
-        `-translate[-t]` to translate a keyword to english.
-        `-limit[-l] <amount>` to limit to search.
-        `-[smiles, cid, formula, name]` to change a search type.
+        These are arguments.
+        `-translate[-t]` to translate a keyword to english. default is false.
+        `-limit[-l] <amount>` to limit to search. default is 1.
+        `-[smiles, cid, formula, name]` to change a search type. default is name.
         `-image[-i]` to show structural formula as bigger.
         `-thumbnail[-tb]` to show structural formula as smaller.
 

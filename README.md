@@ -14,11 +14,11 @@ To search compounds.
 
 These are arguments.
 
-`-translate[-t]` to translate a keyword to english.
+`-translate[-t]` to translate a keyword to english. default is false.
 
-`-limit[-l] <amount>` to limit to search.
+`-limit[-l] <amount>` to limit to search. default is 1.
 
-`-[smiles, cid, formula, name]` to change a search type.
+`-[smiles, cid, formula, name]` to change a search type. default is name.
 
 `-image[-i]` to show structural formula as bigger.
 
