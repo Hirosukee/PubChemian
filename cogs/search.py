@@ -11,7 +11,7 @@ class Search(commands.Cog):
     @commands.command(aliases=["s"])
     async def search(self, ctx, query: str, *args: str):
         namespace = "name"
-        image_mode = "image"
+        image_mode = "thumbnail"
         gos = goslate.Goslate()
         translation = True
         limiter = 1
@@ -31,6 +31,8 @@ class Search(commands.Cog):
 
         if ("-image" or "-i") in args:
             image_mode = "image"
+        if ("-thumbnail" or "-tb") in args:
+            image_mode = "thumbnail"
 
         if ("-l" or "-limit") in args:
             for i, hoge in enumerate(args):
