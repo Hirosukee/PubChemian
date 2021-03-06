@@ -59,10 +59,10 @@ class Search(commands.Cog):
             e.add_field(name="CID", value=str(elem.cid), inline=True)
             e.add_field(name="IUPAC", value=str(elem.iupac_name), inline=False)
             e.add_field(name="Smile", value=str(elem.isomeric_smiles), inline=False)
-            e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 70 else str(elem.synonyms)[:70].replace("[", "").replace("]", "").replace("'", "") + "...")
+            e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 100 else str(elem.synonyms)[:100].replace("[", "").replace("]", "").replace("'", "") + "...")
             if image_mode == True:
                 e.set_image(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
-            else:
+            if image_mode == False:
                 e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
 
             #send
