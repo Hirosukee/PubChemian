@@ -8,7 +8,7 @@ class Help(commands.Cog):
     @commands.command(name="help", aliases=["h"])
     async def _help(self, ctx):
         help_txt = """
-        __**PubChemian Commands**__
+__**PubChemian Commands**__
 
 > `.search[.s] <keyword> <*args>`
 To search compounds.
