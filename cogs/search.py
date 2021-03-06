@@ -31,17 +31,17 @@ class Search(commands.Cog):
         if check("-name"):
             namespace = "name"
 
-        if check("-image") or check("-i"):
+        if check("-image") | check("-i"):
             image_mode = "image"
-        if check("-thumbnail") or check("-tb"):
+        if check("-thumbnail") | check("-tb"):
             image_mode = "thumbnail"
 
-        if check("-l") or check("-limit"):
+        if check("-l") | check("-limit"):
             for i, hoge in enumerate(args):
                 if hoge.isdigit():
                     limiter = int(hoge)
 
-        if check("-t") or check("-translate"):
+        if check("-t") | check("-translate"):
             if not (check("-formula") | check("-cid") | check("-smiles")):
                 query = gos.translate(query, "en")
 
