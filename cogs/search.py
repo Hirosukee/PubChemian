@@ -62,7 +62,7 @@ class Search(commands.Cog):
             e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 100 else str(elem.synonyms)[:100].replace("[", "").replace("]", "").replace("'", "") + "...")
             if image_mode == "image":
                 e.set_image(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
-            else if image_mode == "thumbnail":
+            if image_mode == "thumbnail":
                 e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
 
             #send
