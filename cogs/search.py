@@ -16,7 +16,6 @@ class Search(commands.Cog):
         namespace = "name"
         image_mode = "thumbnail"
         gos = goslate.Goslate()
-        translation = False
         limiter = 1
 
         # args
@@ -31,7 +30,6 @@ class Search(commands.Cog):
             namespace = "formula"
         if check("-name"):
             namespace = "name"
-            translation = True
 
         if check("-image") or check("-i"):
             image_mode = "image"
@@ -43,8 +41,9 @@ class Search(commands.Cog):
                 if hoge.isdigit():
                     limiter = int(hoge)
 
-        if (check("-t") or check("-translate")) & translation:
-            query = gos.translate(query, "en")
+        if check("-t") or check("-translate"):
+            if not (check("-formula") | check("-cid") | check("-smiles")):
+                query = gos.translate(query, "en")
 
         # get page
         compound = pcp.get_compounds(query, namespace)

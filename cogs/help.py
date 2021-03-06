@@ -14,7 +14,7 @@ class Help(commands.Cog):
         > `.search[.s] <keyword> (<*args>)`
         To search compounds.
         These are arguments.
-        `-translate[-t]` to translate a keyword to english. default is false.
+        `-translate[-t]` to translate a keyword to english.
         `-limit[-l] <amount>` to limit to search. default is 1.
         `-[smiles, cid, formula, name]` to change a search type. default is name.
         `-image[-i]` to show structural formula as bigger.
@@ -22,6 +22,8 @@ class Help(commands.Cog):
 
         > `.help[.h]`
         To show this help.
+
+        Github Page: https://github.com/Hirosukee/PubChemian
         """))
 
 def setup(bot):

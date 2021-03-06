@@ -14,7 +14,7 @@ To search compounds.
 
 These are arguments.
 
-`-translate[-t]` to translate a keyword to english. default is false.
+`-translate[-t]` to translate a keyword to english.
 
 `-limit[-l] <amount>` to limit to search. default is 1.
 
