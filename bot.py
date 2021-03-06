@@ -33,7 +33,7 @@ class PubChemian(commands.Bot):
     async def on_ready(self):
         user = self.user
         print("logged in:", str(user), user.id)
-        activity = Game(name=".search <query>")
+        activity = Game(name=".help to view commands")
         await self.change_presence(activity=activity)
 
 
