@@ -10,6 +10,9 @@ class Search(commands.Cog):
 
     @commands.command(aliases=["s"])
     async def search(self, ctx, query: str, *args: str):
+        if ctx.author.bot:
+            return
+
         namespace = "name"
         image_mode = "thumbnail"
         gos = goslate.Goslate()
