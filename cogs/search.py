@@ -29,8 +29,8 @@ class Search(commands.Cog):
             namespace = "formula"
             translation = False
 
-        if ("-thumbnail" or "-tb") in args:
-            image_mode = "thumbnail"
+        if ("-image" or "-i") in args:
+            image_mode = "image"
 
         if ("-l" or "-limit") in args:
             for i, hoge in enumerate(args):
