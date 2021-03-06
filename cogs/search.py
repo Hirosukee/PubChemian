@@ -13,33 +13,33 @@ class Search(commands.Cog):
         namespace = "name"
         image_mode = "thumbnail"
         gos = goslate.Goslate()
-        translation = True
+        translation = False
         limiter = 1
 
-        if "-smiles" in args:
+        def check(arg) -> bool:
+            return arg in args
+
+        if check("-smiles"):
             namespace = "smiles"
-            translation = False
-        if "-cid" in args:
+        if check("-cid"):
             namespace = "cid"
-            translation = False
-        if "-name" in args:
+        if check("-formula"):
+            namespace = "formula"
+        if check("-name"):
             namespace = "name"
             translation = True
-        if "-formula" in args:
-            namespace = "formula"
-            translation = False
 
-        if ("-image" or "-i") in args:
+        if check("-image") or check("-i"):
             image_mode = "image"
-        if ("-thumbnail" or "-tb") in args:
+        if check("-thumbnail") or check("-tb"):
             image_mode = "thumbnail"
 
-        if ("-l" or "-limit") in args:
+        if check("-l") or check("-limit"):
             for i, hoge in enumerate(args):
                 if hoge.isdigit():
                     limiter = int(hoge)
 
-        if (("-t" or "-translate") in args) & translation:
+        if (check("-t") or check("-translate")) & translation:
             query = gos.translate(query, "en")
 
         # get page
