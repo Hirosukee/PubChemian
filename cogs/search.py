@@ -56,7 +56,7 @@ class Search(commands.Cog):
             e.add_field(name="IUPAC", value=str(elem.iupac_name), inline=False)
             e.add_field(name="Smile", value=str(elem.isomeric_smiles), inline=False)
             e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 200 else str(elem.synonyms)[:200].replace("[", "").replace("]", "").replace("'", "") + "...")
-            e.set_image(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
+            e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
 
             #send
             await ctx.send(embed=e)
