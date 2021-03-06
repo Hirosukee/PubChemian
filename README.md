@@ -4,13 +4,15 @@
 
 PubChemian is a discord bot for https://pubchem.ncbi.nlm.nih.gov/.
 
-### **[Invite to your server](https://discord.com/api/oauth2/authorize?client_id=815901654460137472&permissions=117824&scope=bot)
+### **[Invite to your server](https://discord.com/api/oauth2/authorize?client_id=815901654460137472&permissions=117824&scope=bot)**
 
 ## Usage
 
 ### `.search[.s] <keyword> (<*args>)`
 
 To search compounds.
+
+These are arguments.
 
 `-translate[-t]` to translate a keyword to english.
 
