@@ -11,6 +11,7 @@ class Search(commands.Cog):
     @commands.command(aliases=["s"])
     async def search(self, ctx, query: str, *args: str):
         namespace = "name"
+        image_mode = True
         gos = goslate.Goslate()
         translation = True
         limiter = 1
@@ -27,6 +28,9 @@ class Search(commands.Cog):
         if "-formula" in args:
             namespace = "formula"
             translation = False
+
+        if ("-thumbnail" or "-tb") in args:
+            image_mode = False
 
         if ("-l" or "-limit") in args:
             for i, hoge in enumerate(args):
@@ -55,8 +59,11 @@ class Search(commands.Cog):
             e.add_field(name="CID", value=str(elem.cid), inline=True)
             e.add_field(name="IUPAC", value=str(elem.iupac_name), inline=False)
             e.add_field(name="Smile", value=str(elem.isomeric_smiles), inline=False)
-            e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 70 else str(elem.synonyms)[:200].replace("[", "").replace("]", "").replace("'", "") + "...")
-            e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
+            e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 70 else str(elem.synonyms)[:70].replace("[", "").replace("]", "").replace("'", "") + "...")
+            if image_mode:
+                e.set_image(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
+            else:
+                e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
 
             #send
             await ctx.send(embed=e)
