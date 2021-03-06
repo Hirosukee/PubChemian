@@ -11,7 +11,7 @@ class Search(commands.Cog):
     @commands.command(aliases=["s"])
     async def search(self, ctx, query: str, *args: str):
         namespace = "name"
-        image_mode = True
+        image_mode = "image"
         gos = goslate.Goslate()
         translation = True
         limiter = 1
@@ -30,7 +30,7 @@ class Search(commands.Cog):
             translation = False
 
         if ("-thumbnail" or "-tb") in args:
-            image_mode = False
+            image_mode = "thumbnail"
 
         if ("-l" or "-limit") in args:
             for i, hoge in enumerate(args):
@@ -60,9 +60,9 @@ class Search(commands.Cog):
             e.add_field(name="IUPAC", value=str(elem.iupac_name), inline=False)
             e.add_field(name="Smile", value=str(elem.isomeric_smiles), inline=False)
             e.set_footer(text=str(elem.synonyms) if len(str(elem.synonyms)) <= 100 else str(elem.synonyms)[:100].replace("[", "").replace("]", "").replace("'", "") + "...")
-            if image_mode == True:
+            if image_mode == "image":
                 e.set_image(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
-            if image_mode == False:
+            else if image_mode == "thumbnail":
                 e.set_thumbnail(url=f"https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={elem.cid}&t=l")
 
             #send
