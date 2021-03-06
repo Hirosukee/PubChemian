@@ -13,7 +13,7 @@ class Search(commands.Cog):
         namespace = "name"
         gos = goslate.Goslate()
         translation = True
-        limiter = 100
+        limiter = 1
 
         if "-smiles" in args:
             namespace = "smiles"
