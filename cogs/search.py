@@ -15,7 +15,7 @@ class Search(commands.Cog):
 
         namespace = "name"
         image_mode = "thumbnail"
-        gos = goslate.Goslate()
+        go = goslate.Goslate()
         limiter = 1
 
         # args
@@ -43,7 +43,7 @@ class Search(commands.Cog):
 
         if check("-t") | check("-translate"):
             if not (check("-formula") | check("-cid") | check("-smiles")):
-                query = gos.translate(query, "en")
+                query = go.translate(query, "en")
 
         # get page
         compound = pcp.get_compounds(query, namespace)
